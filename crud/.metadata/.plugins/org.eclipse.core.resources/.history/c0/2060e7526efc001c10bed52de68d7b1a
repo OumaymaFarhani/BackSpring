@@ -1,0 +1,60 @@
+package tn.oumayma.crud.entity;
+
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="Departement")
+public class Departement {
+	
+	@Id
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	private int idDepartement;
+	
+	private String Description;
+	
+//	 @OneToMany(mappedBy = "departement", fetch = FetchType.LAZY,
+	//            cascade = CascadeType.ALL)
+	
+	@OneToMany( cascade = CascadeType.ALL)
+	//@JoinColumn(name="departement_id")
+	    private Set<Employees> employees;
+
+	
+	public int getIdDepartement() {
+		return idDepartement;
+	}
+
+	public void setIdDepartement(int idDepartement) {
+		this.idDepartement = idDepartement;
+	}
+
+	public String getDescription() {
+		return Description;
+	}
+
+	public void setDescription(String description) {
+		Description = description;
+	}
+
+	public Set<Employees> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(Set<Employees> employees) {
+		this.employees = employees;
+	}
+
+	
+
+}

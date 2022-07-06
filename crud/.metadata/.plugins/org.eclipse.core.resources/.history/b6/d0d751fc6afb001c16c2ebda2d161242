@@ -1,0 +1,30 @@
+package tn.oumayma.crud.service;
+
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import tn.oumayma.crud.entity.Employees;
+import tn.oumayma.crud.repository.EmployeeRepository;
+
+@Service
+public class EmployeeService {
+	
+	@Autowired
+	private EmployeeRepository e;
+	
+	public Employees save(Employees emp) {
+		return e.save(emp);
+		
+	}
+
+	public EmployeeRepository getE() {
+		return e;
+	}
+
+	public void setE(EmployeeRepository e) {
+		this.e = e;
+	}
+
+}

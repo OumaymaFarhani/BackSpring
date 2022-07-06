@@ -1,0 +1,38 @@
+package tn.oumayma.crud.entity;
+
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Table(name="Employee")
+public class Employees implements  Serializable {
+	@Id
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	private int id;
+	private String nom;
+	private int age;
+	private String adresse;
+	
+	@JsonIgnore
+	@ManyToOne
+	Departement departement;
+
+
+	
+	
+	@Override
+	public String toString() {
+		return "Employees [id=" + id + ", nom=" + nom + ", age=" + age + ", adresse=" + adresse + ", departement="
+				+ departement + "]";
+	}
+	
+}

@@ -1,0 +1,32 @@
+package tn.oumayma.crud.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import tn.oumayma.crud.repository.Departement;
+import tn.oumayma.crud.repository.DepartementRepository;
+
+@Service
+public class DepartementService {
+	@Autowired
+	private DepartementRepository d;
+	
+	public Departement save(Departement dp) {
+		return d.save(dp);
+		
+	}
+	
+	public List<Departement> retrieveAllDepartements() {
+		// TODO Auto-generated method stub
+		return (List<Departement>)d.findAll();
+	}
+
+
+	public Departement getDepartement(int id) {
+		return d.findById(id).get();
+		
+	}
+
+}

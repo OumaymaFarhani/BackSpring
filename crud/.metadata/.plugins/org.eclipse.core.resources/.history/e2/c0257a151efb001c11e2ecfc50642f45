@@ -1,0 +1,5 @@
+package tn.oumayma.crud.entity;
+
+public class Employees {
+
+}

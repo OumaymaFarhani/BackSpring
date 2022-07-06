@@ -1,0 +1,67 @@
+package tn.oumayma.crud.repository;
+
+import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+
+@Entity
+@Table(name="Departement")
+
+
+public class Departement implements  Serializable {
+	@Id
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	private int idDepartement;
+	private String description;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "departement", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<Employees> employees;
+	
+	public Departement() {
+		}
+	
+	public Departement(String description) {
+		super();
+		this.description = description;
+	}
+	public Set<Employees> getEmployees() {
+		return employees;
+	}
+	public void setEmployees(Set<Employees> employees) {
+		this.employees = employees;
+	}
+	public int getIdDepartement() {
+		return idDepartement;
+	}
+
+	public void setIdDepartement(int idDepartement) {
+		this.idDepartement = idDepartement;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	/*@Override
+	public String toString() {
+		return "Departement [idDepartement=" + idDepartement + ", description=" + description + ", employees="
+				+ employees + "]";
+	}*/
+	
+
+}

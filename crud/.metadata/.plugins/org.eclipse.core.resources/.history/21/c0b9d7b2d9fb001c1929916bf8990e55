@@ -1,0 +1,39 @@
+package tn.oumayma.crud.entity;
+
+import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+
+
+@Entity
+@Table(name="Departement")
+public class Departement implements  Serializable {
+	@Id
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	private int idDepartement;
+	private String description;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="departement")
+	private Set<Employees> employees;
+	public int getIdDepartement() {
+		return idDepartement;
+	}
+	public void setIdDepartement(int idDepartement) {
+		this.idDepartement = idDepartement;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+
+}
